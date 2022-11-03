@@ -69,7 +69,8 @@ void Phieu::show(){
         Tong_Diem+=x[i].Diem;
         x[i].show();
     }
-    cout<<setw(50)<<"Tong "<<(float)Tong_Diem/Tong_so_trinh;
+    cout<<setw(50)<<"Tong "<<fixed<<setpricision(2)
+    <<(float)Tong_Diem/Tong_so_trinh;
 }
 
 void Phieu::mor_3_ST(){
