@@ -1,7 +1,7 @@
 #include<iostream>
 #include<windows.h>
 #include<iomanip>
-
+#include<stdio.h>
 using namespace std;
 
 class MonHoc{
@@ -38,7 +38,7 @@ void MonHoc::get(int i){
     cout<<"Diem: "; cin>>Diem;
 }
 void MonHoc::show(){
-    cout<<TenMon<<setw(20)<<Sotrinh<<setw(20)<<Diem<<endl;
+    cout<<setw(15)<<TenMon<<setw(20)<<Sotrinh<<setw(20)<<Diem<<endl;
 }
 int MonHoc::getstrinh(){
     return Sotrinh;
@@ -58,18 +58,19 @@ void Phieu::get(){
     x = new MonHoc[n];
     for(int i=0;i<n;i++)
         x[i].get(i+1);
+    system("cls");
 }
 void Phieu::show(){
     double Tong_Diem=0, Tong_so_trinh=0;
     cout<<"Ma sinh vien: "<<Masv<<setw(50)<<"Ten sinh vien: "<<Tensv<<endl;
-    cout<<"Lop: "<<Lop<<setw(50)<<"Khoa"<<Khoa<<endl;
-    cout<<"Ten Mon"<<setw(20)<<"So trinh"<<setw(20)<<"Diem: "<<endl;
+    cout<<"Lop: "<<Lop<<setw(53)<<"Khoa:"<<Khoa<<endl<<endl;
+    cout<<setw(15)<<"Ten Mon"<<setw(20)<<"So trinh"<<setw(20)<<"Diem"<<endl;
     for(int i=0;i<n;i++){
         Tong_so_trinh+=x[i].Sotrinh;
         Tong_Diem+=x[i].Diem;
         x[i].show();
     }
-    cout<<setw(50)<<"Tong "<<fixed<<setpricision(2)
+    cout<<setw(51)<<"Tong "<<fixed<<setprecision(2)
     <<(float)Tong_Diem/Tong_so_trinh;
 }
 
@@ -110,7 +111,7 @@ int main(){
 /*
 2021608149
 Nguyen Viet
-OOP
+KHMT01
 16
 3
 Toan roi rac
