@@ -45,7 +45,6 @@ int main(){
     Array a(4),b;
     cout<<"Argument constructor"<<endl;
     a.Show();
-    a.~Array();
     cout<<"Non-Argument constructor"<<endl;
     b.Get();
     b.Show();
