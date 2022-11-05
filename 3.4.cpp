@@ -13,7 +13,7 @@ class Arg{
         Arg(double, double, double);
         void Get();
         void Show();
-        void Execute();
+    friend void Execute(Arg x);
 };
 
 Arg::Arg():a(0),b(0),c(0)
@@ -27,15 +27,15 @@ void Arg::Get(){
 void Arg::Show(){
     cout<<a<<"x^2 + "<<b<<"x + "<<c<<" = 0"<<endl;
 }
-void Arg::Execute(){
+void Execute(Arg x){
     double delta,x1,x2;
-    delta = pow(b,2) - 4*a*c;
-    if(a==0)
-        cout<<"Nghiem duy nhat cua phuong trinh la: "<<(double)-c/b<<endl;
+    delta = pow(x.b,2) - 4*x.a*x.c;
+    if(x.a==0)
+        cout<<"Nghiem duy nhat cua phuong trinh la: "<<(double)-x.c/x.b<<endl;
     else  
         if(delta>0){
-            x1=(double)(-b + sqrt(delta))/(2*a);
-            x2=(double)(-b - sqrt(delta))/(2*a);
+            x1=(double)(-x.b + sqrt(delta))/(2*x.a);
+            x2=(double)(-x.b - sqrt(delta))/(2*x.a);
             cout<<"Phuong trinh co 2 nghiem phan biet: "<<endl;
             cout<<"X1 = "<<x1<<endl;
             cout<<"X2 = "<<x2<<endl;
@@ -47,9 +47,9 @@ void Arg::Execute(){
 int main(){
     Arg a(3,-5,2),b;
     a.Show();
-    a.Execute();
+    Execute(a);
     cout<<"--------------------------"<<endl;
     b.Get();
     b.Show();
-    b.Execute();
+    Execute(b);
 }
