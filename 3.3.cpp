@@ -3,9 +3,10 @@
 #include<iomanip>
 
 using namespace std;
-
+class Hang;
 class Date{
     int D,M,Y;
+    friend int MatHang_2017(Hang x);
     friend class Hang;
 };
 
@@ -15,26 +16,23 @@ class Hang{
         char TenHang[30];
         Date Ngaysx;
     public:
-        void Get(int);
-        void Show(int);
-        int MatHang_2017();
+        void Get();
+        void Show();
+    friend int MatHang_2017(Hang x);
 };
 
-void Hang::Get(int i){
-    cout<<"Hang so "<<i<<endl;
+void Hang::Get(){
     cout<<"DD/MM/YYYY: "; cin>>Ngaysx.D>>Ngaysx.M>>Ngaysx.Y;
     cout<<"Ma Hang: ";  fflush(stdin);  gets(MaHang);
     cout<<"Ten Hang: "; fflush(stdin);  gets(TenHang);
 }
-void Hang::Show(int i){
-    cout<<"Hang so "<<i<<endl;
-    cout<<"Ngay san xuat: "<<Ngaysx.D<<"/"<<Ngaysx.M<<"/"<<Ngaysx.Y<<endl;
-    cout<<"Ma Hang: "<<MaHang<<endl;
-    cout<<"Ten Hang: "<<TenHang<<endl<<endl;
+void Hang::Show(){
+    cout<<setw(8)<<Ngaysx.D<<"/"<<Ngaysx.M<<"/"<<Ngaysx.Y;
+    cout<<setw(15)<<MaHang<<setw(15)<<TenHang<<endl;
 }
-int Hang::MatHang_2017(){
-    if(Ngaysx.Y==2017)
-        return Ngaysx.Y;
+int MatHang_2017(Hang x){
+    if(x.Ngaysx.Y==2017)
+        return x.Ngaysx.Y;
     return 0;
 }
 //--------------------------------------------------------
@@ -43,14 +41,16 @@ int main(){
     cout<<"Nhap so luong hang hoa: ";   cin>>n;
     Hang* h = new Hang[n];
     for(int i=0;i<n;i++)
-        h[i].Get(i+1);
+        h[i].Get();
     system("cls");
+    cout<<setw(15)<<"Ngay san xuat"<<setw(15)<<"Ma Hang"<<setw(15)<<"Ten Hang"<<endl;
     for(int i=0;i<n;i++)
-        h[i].Show(i+1);
-    cout<<"Nhung mat hang duoc san xuat vao nam 2017"<<endl;
+        h[i].Show();
+    cout<<"\nNhung mat hang duoc san xuat vao nam 2017"<<endl;
+    cout<<setw(15)<<"Ngay san xuat"<<setw(15)<<"Ma Hang"<<setw(15)<<"Ten Hang"<<endl;
     for(int i=0;i<n;i++)
-        if(h[i].MatHang_2017()==2017)
-            h[i].Show(i+1);
+        if(MatHang_2017(h[i])==2017)
+            h[i].Show();
 }
 
 //INPUT
