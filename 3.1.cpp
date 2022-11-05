@@ -11,14 +11,13 @@ class SINHVIEN{
         char Hoten[30];
         double DiemToan, DiemLy, DiemHoa;
     public:
-        void Nhap(int);
-        void Xuat(int);
-        double TongDiem();
+        void Nhap();
+        void Xuat();
+        friend double TongDiem(SINHVIEN);
         friend void sapxep(SINHVIEN,int);
 };
 
-void SINHVIEN::Nhap(int i){
-    cout<<"Sinh vien thu "<<i<<endl;
+void SINHVIEN::Nhap(){
     cout<<"Ma sinh vien: "; fflush(stdin);  gets(Masv);
     cout<<"Ho ten: ";   fflush(stdin);  gets(Hoten);
     cout<<"Diem Toan: ";    cin>>DiemToan;
@@ -26,25 +25,24 @@ void SINHVIEN::Nhap(int i){
     cout<<"Diem Hoa: "; cin>>DiemHoa;
 }
 
-void SINHVIEN::Xuat(int i){
-    cout<<"Ma sinh vien: "<<Masv<<endl;
-    cout<<"Ho ten: "<<Hoten<<endl;
-    cout<<"Diem Toan: "<<DiemToan<<endl;
-    cout<<"Diem Ly: "<<DiemLy<<endl;
-    cout<<"Diem Hoa: "<<DiemHoa<<endl;
-    cout<<"Tong Diem: "<<TongDiem()<<endl;
+void SINHVIEN::Xuat(){
+    cout<<setw(15)<<Masv<<setw(20)<<Hoten<<setw(15);
+    cout<<DiemToan<<setw(15)<<DiemLy<<setw(15)<<DiemHoa<<setw(15)<<TongDiem(*this)<<endl;
 }
 
-double SINHVIEN::TongDiem(){
+double TongDiem(SINHVIEN x){
     double Tong;
-    Tong=DiemHoa + DiemToan + DiemLy;
+    Tong=x.DiemHoa + x.DiemToan + x.DiemLy;
     return Tong;
 }
 void sapxep(SINHVIEN* a, int n){
     for(int i=0;i<n-1;i++)
         for(int j=i+1;j<n;j++)
-            if(a[i].TongDiem()>a[j].TongDiem())
-                swap(a[i],a[j]);
+            if(TongDiem(a[i])>TongDiem(a[j])){
+                SINHVIEN tempt = a[i];
+                a[i] = a[j];
+                a[j] = tempt;
+            }
 }
 //--------------------------------------------------------
 int main(){
@@ -52,12 +50,15 @@ int main(){
     cout<<"Nhap so luong sinh vien: ";  cin>>n;
     SINHVIEN* v = new SINHVIEN[n];
     for(int i=0;i<n;i++)
-        v[i].Nhap(i+1);
+        v[i].Nhap();
     system("cls");
     cout<<"Sap xep"<<endl;
+    cout<<setw(15)<<"Ma sinh vien"<<setw(15)<<"Ho ten"<<setw(20);
+    cout<<"Diem Toan"<<setw(15)<<"Diem Ly"<<setw(15)<<"Diem Hoa"<<setw(15)<<"Tong Diem"<<endl;
     sapxep(v,n);
     for(int i=0;i<n;i++)
-        v[i].Xuat(i);
+        v[i].Xuat();
+    delete [] v;
 }
 
 //INPUT
