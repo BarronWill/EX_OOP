@@ -76,11 +76,11 @@ void Phieu::show(){
 
 void Phieu::mor_3_ST(){
     for(int i=0;i<n;i++){
-        char* ans=x[i].getname();
-        if(x[i].getstrinh()>3)
+        if(x[i].getstrinh()>3){
+            char* ans=x[i].getname();
             i!=n-1?cout<<ans<<", ":cout<<ans<<endl;
-        ans=NULL;
-        delete [] ans;
+            delete [] ans;
+        }
     }
 }
 
