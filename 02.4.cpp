@@ -100,7 +100,7 @@ int main(){
     for(int i =0; i<n; i++){
         h[i].xuat();
     }
-
+    delete [] h;
 }
 
 /*
