@@ -47,7 +47,7 @@ ostream& operator<<(ostream& in, const TAMTHUC& y)
     return in;
 }
 int main(){
-    TAMTHUC x(2,5,4), y(1,4,2);
+    TAMTHUC x(1,2,3), y(4,5,6);
     x=-x;y=-y;
     cout<<"Tam thuc x da dao dau: "<<x<<endl;
     cout<<"Tam thuc y da dao dau: "<<y<<endl;
