@@ -37,7 +37,7 @@ class Benh_Nhan : public Nguoi{
         void xuat();
     friend void sua(Benh_Nhan* a, int n);
 };
-
+//-------------------------------------------------
 void Nguoi::nhap(){
     cout<<"Ho ten: ";   fflush(stdin);  gets(ten);
     cout<<"Tuoi: "; cin>>tuoi;
