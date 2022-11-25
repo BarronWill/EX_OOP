@@ -48,7 +48,7 @@ class TruongDH: public Truong{
         void Xuat();
     friend void Xoa(TruongDH& a);
 };
-
+//-------------------------------------------------
 void Truong::Nhap(){
     cout<<"Ma truong: ";    fflush(stdin);  gets(matruong);
     cout<<"Ten truong: ";   fflush(stdin);  gets(tentruong);
