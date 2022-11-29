@@ -7,7 +7,7 @@ using namespace std;
 
 class TruongDH;
 class Khoa{
-    protected:
+   private:
         char makhoa[15];
         char tenkhoa[15];
         char truongkhoa[20];
@@ -48,7 +48,8 @@ class TruongDH: public Truong{
         void Xuat();
     friend void Xoa(TruongDH& a);
 };
-//-------------------------------------------------
+
+//-----------------------------------------------
 void Truong::Nhap(){
     cout<<"Ma truong: ";    fflush(stdin);  gets(matruong);
     cout<<"Ten truong: ";   fflush(stdin);  gets(tentruong);
@@ -98,12 +99,11 @@ void TruongDH::Xuat(){
 }
 
 void Xoa(TruongDH& a){
-    for(int i=0; i<a.n; i++)
+    for(int i=0; i<a.n; i++){
         if(strcmp(a.x[i].makhoa,"KH01") == 0)
-            for(int j=i;j<a.n-1;j++){
-                a.x[j] = a.x[j+1];
+                a.x[i] = a.x[i+1];
                 a.n--;
-            }
+        }
 }
 
 //--------------------------------------------------
