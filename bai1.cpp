@@ -38,6 +38,7 @@ private:
     int n;
     thuoc* a;
 public:
+    ~phieu();
     void nhap();
     void xuat();
 friend void sua(phieu& obj);
@@ -66,7 +67,9 @@ cout<<"Nhap ten hang: ";    fflush(stdin);  gets(tenhang);
 cout<<"So luong: "; cin>>soluong;
 cout<<"Don gia: ";  cin>>dongia;
 }
-
+phieu::~phieu(){
+    delete [] a;
+}
 void phieu::nhap(){
     cout<<"Ma phieu: "; fflush(stdin);  gets(maphieu);
     cout<<"Ngay lap: "; fflush(stdin);  gets(ngaylap);
